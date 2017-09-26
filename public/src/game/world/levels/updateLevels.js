@@ -21,7 +21,7 @@ function updateFirstLevel(context) {
 
     let newPickable = getNearestPickableManual(PJ);
     if (newPickable) {
-      if(PJ.nearestPickable) PJ.nearestPickable.showHalo(false);
+      if (PJ.nearestPickable) PJ.nearestPickable.showHalo(false);
       newPickable.showHalo(true);
     }
     PJ.nearestPickable = newPickable;
@@ -30,7 +30,7 @@ function updateFirstLevel(context) {
     // Shop
     ///////////////
 
-    if(GAME.shop) GAME.shop.refresh();
+    if (GAME.shop) GAME.shop.refresh();
 
     let time1 = performance.now();
     /////////////////
@@ -65,7 +65,7 @@ function updateFirstLevel(context) {
       game.debug.text('Last AI think time: ' + (MONITOR.thinkTimesAI[MONITOR.thinkTimesAI.length - 1] * game.time.fps / 10).toFixed(2) + "%", 40, game.camera.height - 70, "#00ff00");
       game.debug.text('Last collision detection time: ' + ((time2 - time1) * game.time.fps / 10).toFixed(2) + "%", 40, game.camera.height - 50, "#00ff00");
       game.debug.text('Last hero controls time: ' + ((time1 - time0) * game.time.fps / 10).toFixed(2) + "%", 40, game.camera.height - 30, "#00ff00");
-      game.debug.text('Update world time (all): ' + ((time3 - time0) * game.time.fps / 10).toFixed(2) + "%", 40, game.camera.height - 10  , "#00ff00");
+      game.debug.text('Update world time (all): ' + ((time3 - time0) * game.time.fps / 10).toFixed(2) + "%", 40, game.camera.height - 10, "#00ff00");
     }
     // Physics
     if (GAME.debugPhysics) {
@@ -157,8 +157,10 @@ function updateCollisions(context) {
   })
 
   game.physics.arcade.collide(GAME.bots, GAME.base.granny, (granny, bot) => {
-    granny.receiveDamage(bot.dmg);
-    bot.die(granny);
+    if (!bot.ignoreGranny) { 
+      granny.receiveDamage(bot.dmg);
+      bot.die(granny);
+    }
   });
 
   game.physics.arcade.collide(GAME.bots, this.context.layer, (p1, p2) => {
@@ -216,7 +218,7 @@ function updateCollisions(context) {
   });
 
   game.physics.arcade.collide(GAME.bots, GAME.bullets, (bot, bullet) => {
-    if(bot.alive) bullet.hitBot(bot);
+    if (bot.alive) bullet.hitBot(bot);
   });
 
   game.physics.arcade.collide(PJ, GAME.enemyBullets, (bot, bullet) => {

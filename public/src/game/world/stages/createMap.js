@@ -64,7 +64,7 @@ function loadObjects(objects, context) {
         case "raid":
           break;
         case "boss":
-          this.context.boss = new DefenderBossBot(game,  bumper.x, bumper.y, "boss1", {
+          this.context.boss = new DefenderBossBot(game,  bumper.x, bumper.y, {
             base: {
               x: bumper.x,
               y: bumper.y
@@ -77,14 +77,7 @@ function loadObjects(objects, context) {
             hp: 500,
             maxHp: 500,
           });
-          GAME.botsContainer.push(this.context.boss);
-          this.context.boss.loot = ITEMS.loots.boss;
-          this.context.boss.team = 0;
-          this.context.boss.dmg = 50;
-          this.context.boss.angryKey = "boss1";
-          this.context.boss.width = 126;
-          this.context.boss.height = 226;
-          this.context.boss.attackRange = 366;
+          GAME.botsContainer.push(this.context.boss); 
           this.context.boss.spawn();
           GAME.bots.add(this.context.boss);
           break;
