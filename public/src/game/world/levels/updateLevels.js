@@ -268,7 +268,7 @@ function updateCollisions(context) {
       }
     }
     // hero NOT on the ground and touching a wall on the right
-    if ((PJ.body.blocked.right || PJ.body.blocked.left) && !PJ.body.blocked.down) {
+    if ((PJ.body.blocked.right || PJ.body.wasTouching.right || PJ.body.blocked.left  || PJ.body.wasTouching.left) && !PJ.body.blocked.down) {
       PJ.onWall = true;
     }
 

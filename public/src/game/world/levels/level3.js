@@ -35,6 +35,11 @@ function createFirstLevel3(context, tilemapName) {
   background.height = this.context.H;
   game.world.sendToBack(background);
 
+  // SOUND.backgroundMusic = game.add.audio("background_music", 0.25, false);
+  // SOUND.backgroundMusic.loop = true;
+  // SOUND.backgroundMusic.play();
+  if(SOUND.backgroundMusic) SOUND.backgroundMusic.stop();
+
   createBaseElements({
     // shop: {
     //   x: (ROOM_W * 2 - 23) * CELL_W,
@@ -105,9 +110,11 @@ function createFirstLevel3(context, tilemapName) {
 function createFirstLevel7(context, tilemapName) {
   this.context = context;
 
-  SOUND.backgroundMusic = game.add.audio("boss_music", 0.25, false);
-  SOUND.backgroundMusic.loop = true;
-  SOUND.backgroundMusic.play();
-
   createFirstLevel3(context, tilemapName);
+
+  if (!SOUND.backgroundMusic || !SOUND.backgroundMusic.isPlaying) {
+    SOUND.backgroundMusic = game.add.audio("boss_music", 0.25, false);
+    SOUND.backgroundMusic.play();
+  }
+
 }

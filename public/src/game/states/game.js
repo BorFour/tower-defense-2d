@@ -34,11 +34,6 @@ playGame.prototype = {
     background.width = MAX_W;
     background.height = MAX_H;
 
-    SOUND.backgroundMusic = game.add.audio("background_music", 0.25, false);
-    SOUND.backgroundMusic.loop = true;
-    SOUND.backgroundMusic.play();
-
-
     GAME.collisionGroups = {};
 
     for (var key in Team) {
