@@ -34,6 +34,8 @@
 
 - Nivel 5: no spoiler, pásalo bien :D
 
+- Fight for your life, granny! La abuela lanza orbes mágicos a los enemigos cercanos
+
 ## 09/25/2017
 
 <!-- - Efectos chulos: activar -->

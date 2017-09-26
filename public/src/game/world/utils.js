@@ -23,9 +23,9 @@ function getCursorCoords() {
 
 function getEnemies(characters, team) {
   let ret = [];
-  if(team != PJ.team) ret.push(PJ);
+  if(PJ.alive && team != PJ.team) ret.push(PJ);
   characters.forEach((item) => {
-    if(item.team != team) ret.push(item);
+    if(item.alive && item.team != team) ret.push(item);
   });
   return ret;
 }

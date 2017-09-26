@@ -95,7 +95,7 @@ class BeeHive extends Group{
     }, this);
   }
   spawnBee() {
-    let member = new this.creator(game, this.center.x, this.center.y, this.botKey, {
+    let member = new this.creator(game, this.center.x, this.center.y, {
       hero: PJ,
       base: this.target,
       target: this.target

@@ -20,7 +20,6 @@ class Base extends Building {
     super(game, x, y, key);
     this.granny = new Granny(game, x, y - 75);
     this.granny.spawn();
-    this.granny.body.moves = false;
     // this.granny.events.onAnimationComplete.add(() => {
     //   this.granny.scale.x *= -1;
     //   this.granny.animations.play('idle', 5, false);

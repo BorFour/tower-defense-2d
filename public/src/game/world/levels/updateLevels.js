@@ -107,7 +107,9 @@ function updateBots(context) {
   // GAME.turret.shoot();
   if (GAME.turrets) GAME.turrets.forEach((turret) => {
     if (turret.alive) turret.shoot();
-  })
+  });
+
+  if (GAME.base.granny.alive) GAME.base.granny.shoot();
 
   if (GAME.bots) GAME.bots.forEach((currBot) => {
     if (currBot.alive) currBot.move();
@@ -157,7 +159,7 @@ function updateCollisions(context) {
   })
 
   game.physics.arcade.collide(GAME.bots, GAME.base.granny, (granny, bot) => {
-    if (!bot.ignoreGranny) { 
+    if (!bot.ignoreGranny) {
       granny.receiveDamage(bot.dmg);
       bot.die(granny);
     }

@@ -17,7 +17,7 @@ function loadObjects(objects, context) {
     bumpers2.map((bumper) => {
       switch (bumper.name) {
         case "turret":
-          let turret = new Turret(game, bumper.x, bumper.y, "turret");
+          let turret = new CousinTurret(game, bumper.x, bumper.y, "turret");
           turret.spawn();
           GAME.turrets.add(turret);
           break;
@@ -77,7 +77,7 @@ function loadObjects(objects, context) {
             hp: 500,
             maxHp: 500,
           });
-          GAME.botsContainer.push(this.context.boss); 
+          GAME.botsContainer.push(this.context.boss);
           this.context.boss.spawn();
           GAME.bots.add(this.context.boss);
           break;
@@ -162,7 +162,7 @@ function createBaseElements(args) {
   }
 
   if (args.turret) {
-    let turret = new Turret(game, args.turret.x, args.turret.y, "turret");
+    let turret = new CousinTurret(game, args.turret.x, args.turret.y, "turret");
     turret.spawn();
     GAME.turrets.add(turret);
   }

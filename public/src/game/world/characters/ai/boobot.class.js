@@ -29,11 +29,3 @@ class FlyingShooterBot extends BooBot {
     this.shoot();
   }
 }
-
-class FlyingFoe extends FlyingShooterBot{
-  constructor(game, x, y, key, args) {
-    super(game, x, y, key, args);
-    this.body.setSize(128, 128, 0, 0);
-    this.body.reset(this.x, this.y);
-  }
-}

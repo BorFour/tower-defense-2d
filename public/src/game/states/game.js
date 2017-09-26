@@ -114,6 +114,7 @@ playGame.prototype = {
     game.world.bringToTop(GAME.tombs);
     game.world.bringToTop(GAME.bullets);
     game.world.bringToTop(GAME.bots);
+    game.world.bringToTop(GAME.base.granny.cauldron);
     game.world.bringToTop(GAME.base.granny);
     game.world.bringToTop(GAME.base.granny.healthbar);
     game.world.bringToTop(PJ);
