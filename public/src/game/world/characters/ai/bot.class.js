@@ -15,7 +15,13 @@ class Bot extends LivingCharacter {
 
   shoot() {
     if (this.canShoot && GAME.bots.length > 0) {
-      let bullet = super.shoot(getNearestTarget(this, getEnemies(GAME.bots, this.team)), null, MagicOrb);
+      let target = getNearestTarget(this, getEnemies(GAME.bots, this.team));
+      if (!target) return;
+      let newTarget = {
+        x: target.body.center.x,
+        y: target.body.center.y - 15,
+      };
+      let bullet = super.shoot(newTarget, null, MagicOrb);
       if (bullet) {
         bullet.width = 50;
         bullet.height = 30;
