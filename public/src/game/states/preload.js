@@ -67,6 +67,7 @@ function loadResources() {
   game.load.tilemap("level4", 'levels/level4.json', null, Phaser.Tilemap.TILED_JSON);
   game.load.tilemap("level5", 'levels/level5.json', null, Phaser.Tilemap.TILED_JSON);
   game.load.tilemap("level6", 'levels/level6.json', null, Phaser.Tilemap.TILED_JSON);
+  game.load.tilemap("level7", 'levels/level7.json', null, Phaser.Tilemap.TILED_JSON);
   game.load.image("tileset02", "3c817ff046.png");
   game.load.image("tileset_platformer01", "tileset_platformer01.png");
   game.load.image("tile", "tile.png");

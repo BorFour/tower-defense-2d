@@ -71,7 +71,9 @@ class KeyboardController extends Controller {
     }, main);
 
     game.input.onUp.add(() => {
-      PJ.currentWeapon.onUp(GAME.controller.shootPoint());
+      if (game.input.activePointer.leftButton.isDown) {
+        PJ.currentWeapon.onUp(GAME.controller.shootPoint());
+      }
     }, main);
 
   }

@@ -30,7 +30,7 @@ function updateFirstLevel(context) {
     // Shop
     ///////////////
 
-    GAME.shop.refresh();
+    if(GAME.shop) GAME.shop.refresh();
 
     let time1 = performance.now();
     /////////////////

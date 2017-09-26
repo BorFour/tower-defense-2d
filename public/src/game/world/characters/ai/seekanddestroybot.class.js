@@ -64,9 +64,10 @@ class FrogFoe extends SeekAndDestroyBot {
     this.animations.add('idle', [0, 1, 2, 3, 4, 5, 6, 7], 10, true);
     this.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7], 10, true);
     this.animations.add('jump', [8, 9, 10, 11, 12, 13, 14, 15], 10, true);
+    this.scale.set(1.25);
     this.play('walk');
     this.angryKey = key;
-    this.body.setSize(64, 32, 0, 0);
+    this.body.setSize(48, 32, 8, 0);
     this.body.reset(this.x, this.y);
   }
 }

@@ -95,6 +95,12 @@ class GameManager {
     let fourthStage = new Level(createFirstLevel3, updateFirstLevel, newWaveFirstLevel, removeFirstLevel, this.context, 'level4');
     let fifthStage = new Level(createFirstLevel3, updateFirstLevel, newWaveFirstLevel, removeFirstLevel, this.context, 'level5');
     let sixthStage = new Level(createFirstLevel3, updateFirstLevel, newWaveFirstLevel, removeFirstLevel, this.context, 'level6');
+    let seventhStage = new Level(createFirstLevel3, updateFirstLevel, newWaveFirstLevel, removeFirstLevel, this.context, 'level7');
+
+    seventhStage.isComplete = function() {
+      return PJ.score >= 2;
+    };
+
     this.stages = [];
     // this.stages.push(firstStage);
     // this.stages.push(secondStage);
@@ -102,6 +108,7 @@ class GameManager {
     this.stages.push(fourthStage);
     this.stages.push(fifthStage);
     this.stages.push(sixthStage);
+    this.stages.push(seventhStage);
     this.currentIndex = GAME.dataLoader.firstLevel - 1;
   }
 

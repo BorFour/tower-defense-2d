@@ -100,15 +100,15 @@
                 }, 
                 {
                  "gid":6,
-                 "height":113.636363636364,
+                 "height":113.636,
                  "id":56,
                  "name":"boss",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":96.969696969697,
-                 "x":1253.0303030303,
-                 "y":935.606060606061
+                 "width":96.9697,
+                 "x":1253.03,
+                 "y":935.606
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -124,12 +124,12 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"base_items.tsx"
+         "source":"..\/..\/..\/levels\/base_items.tsx"
         }, 
         {
          "columns":16,
          "firstgid":7,
-         "image":"tileset_platformer01.png",
+         "image":"..\/..\/..\/levels\/tileset_platformer01.png",
          "imageheight":512,
          "imagewidth":512,
          "margin":0,
