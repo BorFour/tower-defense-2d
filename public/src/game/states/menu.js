@@ -19,13 +19,14 @@ function moveToXY(displayObject, x, y, speed) {
 var preMenu = function(game) {}
 preMenu.prototype = {
   preload: function() {
+    game.load.path = "public/assets/";
     // Buttons
-    game.load.image("enterRoom", "assets/enterRoom.png");
-    game.load.image("changeMap", "assets/change_map.png");
-    game.load.image("keyboard", "assets/keyboard.png");
-    game.load.image("gamepad", "assets/gamepad.png");
-    game.load.image("donpatchojeras", "assets/donpatchojeras.jpg");
-    game.load.spritesheet('grannyx4', 'assets/abuela_spritesheet1x512.png', 512, 512, 3);
+    game.load.image("enterRoom", "enterRoom.png");
+    game.load.image("changeMap", "change_map.png");
+    game.load.image("keyboard", "keyboard.png");
+    game.load.image("gamepad", "gamepad.png");
+    game.load.image("donpatchojeras", "donpatchojeras.jpg");
+    game.load.spritesheet('grannyx4', 'abuela_spritesheet1x512.png', 512, 512, 3);
   },
   create: function() {
 
