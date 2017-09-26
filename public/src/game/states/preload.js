@@ -129,6 +129,7 @@ function loadResources() {
   game.load.spritesheet('gator_derp', 'gator_derp4x4.png', 128, 128, 4);
   game.load.spritesheet('frog', 'rana64x64.png', 64, 64, 16);
   game.load.spritesheet('cauldron', 'caldero64x48.png', 64, 48, 4);
+  game.load.spritesheet('cousin', 'primo4x4.png', 128, 161, 4);
   // Keys
   game.load.image('key_F', 'key_F.png');
   // Audio

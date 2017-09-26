@@ -97,26 +97,24 @@ function getShopItems() {
     }
   });
 
-  let dogeItem = new Purchasable(game, 'doge', {
+  let dogeItem = new Purchasable(game, 'cousin', {
     price: 30,
     onPurchase: function() {
-      let doge = new CompanionBot(game, PJ.x + 20, PJ.y, "undead", {
+      let cousin = new CousinCompanionBot(game, PJ.x + 20, PJ.y, {
         base: PJ,
         target: PJ,
         hero: null
       });
-      doge.team = PJ.team;
-      doge.dmg = 50;
-      doge.angryKey = "undead";
-      doge.width = 26;
-      doge.height = 26;
-      doge.attackRange = 166;
-      // doge.animations.add('walk');
-      // doge.animations.play('walk', 10, false);
-      doge.spawn();
-      GAME.bots.add(doge);
-      GAME.botsContainer.push(doge);
-      PJ.minions.push(doge);
+      cousin.team = PJ.team;
+      cousin.dmg = 25;
+      cousin.angryKey = "cousin";
+      cousin.width = 64;
+      cousin.height = 84;
+      cousin.attackRange = 166;
+      cousin.spawn();
+      GAME.bots.add(cousin);
+      GAME.botsContainer.push(cousin);
+      PJ.minions.push(cousin);
 
     }
   });

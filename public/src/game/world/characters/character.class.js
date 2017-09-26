@@ -276,7 +276,6 @@ class Character extends Phaser.Sprite {
   remove() {
     this.destroy();
   }
-
 }
 
 class LivingCharacter extends Character {
@@ -288,9 +287,8 @@ class LivingCharacter extends Character {
     this.maxHp = args.maxHp || 100;
     this.healthbar = game.add.sprite(0, -this.height / 2 - 8, 'healthbar');
     this.healthbar.anchor.set(.5);
-    this.healthbar.height = 10;
+    this.healthbar.height = 5;
     this.healthbar.scale.x = .18 * (this.hp / this.maxHp);
-
   }
 
   update() {
@@ -330,8 +328,6 @@ class LivingCharacter extends Character {
     super.kill();
     this.healthbar.kill();
   }
-
-
 }
 
 class Attack extends Character {

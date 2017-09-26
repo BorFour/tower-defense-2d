@@ -48,6 +48,7 @@ class Hero extends LivingCharacter {
   }
 
   nextWeapon() {
+    this.line1 = null;
     this.changeWeaponSound.play();
     this._currWeapon += 1;
     this._currWeapon %= this.weapons.length;
@@ -55,6 +56,7 @@ class Hero extends LivingCharacter {
   }
 
   prevWeapon() {
+    this.line1 = null;
     this.changeWeaponSound.play();
     this._currWeapon -= 1;
     this._currWeapon += this.weapons.length;
@@ -63,6 +65,7 @@ class Hero extends LivingCharacter {
   }
 
   changeWeapon() {
+    this.line1 = null;
     this.canShoot = false;
     this.shootTimer = game.time.create(true);
     this.shootTimer.add(500, () => {

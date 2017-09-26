@@ -159,7 +159,7 @@ function updateCollisions(context) {
   })
 
   game.physics.arcade.collide(GAME.bots, GAME.base.granny, (granny, bot) => {
-    if (!bot.ignoreGranny) {
+    if (!bot.ignoreGranny && bot.team != granny.team) {
       granny.receiveDamage(bot.dmg);
       bot.die(granny);
     }
@@ -194,14 +194,15 @@ function updateCollisions(context) {
     });
 
     if (currBot.punch) {
-      game.physics.arcade.collide(GAME.bots, currBot.punch, (bot1, bot2) => {
+      game.physics.arcade.collide(GAME.bots, currBot.punch, (bot2, bot1) => {
         if (!bot1 || !bot1.alive) return;
         if (bot1.team == bot2.team) return;
-        bot1.receiveDamage(bot2.punch);
-        if (bot2.punch) {
-          bot2.punch.alive = false;
-          bot2.punch.kill();
-          bot2.punch = null;
+        console.log(bot1);
+        bot1.receiveDamage(currBot.punch);
+        if (currBot.punch) {
+          currBot.punch.alive = false;
+          currBot.punch.kill();
+          currBot.punch = null;
         }
       });
     }

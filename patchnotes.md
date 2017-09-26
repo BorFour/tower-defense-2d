@@ -36,6 +36,8 @@
 
 - Fight for your life, granny! La abuela lanza orbes mágicos a los enemigos cercanos
 
+- Compra PRIMOS en la tienda  
+
 ## 09/25/2017
 
 <!-- - Efectos chulos: activar -->
