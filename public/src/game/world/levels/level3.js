@@ -101,3 +101,13 @@ function createFirstLevel3(context, tilemapName) {
   game.camera.follow(PJ, Phaser.Camera.FOLLOW_TOPDOWN_TIGHT);
 
 }
+
+function createFirstLevel7(context, tilemapName) {
+  this.context = context;
+
+  SOUND.backgroundMusic = game.add.audio("boss_music", 0.25, false);
+  SOUND.backgroundMusic.loop = true;
+  SOUND.backgroundMusic.play();
+
+  createFirstLevel3(context, tilemapName);
+}

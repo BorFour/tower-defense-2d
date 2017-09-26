@@ -95,7 +95,7 @@ class GameManager {
     let fourthStage = new Level(createFirstLevel3, updateFirstLevel, newWaveFirstLevel, removeFirstLevel, this.context, 'level4');
     let fifthStage = new Level(createFirstLevel3, updateFirstLevel, newWaveFirstLevel, removeFirstLevel, this.context, 'level5');
     let sixthStage = new Level(createFirstLevel3, updateFirstLevel, newWaveFirstLevel, removeFirstLevel, this.context, 'level6');
-    let seventhStage = new Level(createFirstLevel3, updateFirstLevel, newWaveFirstLevel, removeFirstLevel, this.context, 'level7');
+    let seventhStage = new Level(createFirstLevel7, updateFirstLevel, newWaveFirstLevel, removeFirstLevel, this.context, 'level7');
 
     seventhStage.isComplete = function() {
       return PJ.score >= 2;

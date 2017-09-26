@@ -141,6 +141,7 @@ function loadResources() {
   game.load.audio('not_bad_elias', 'audio/no_esta_mal_elias.m4a');
   game.load.audio('not_bad_adri', 'audio/no_esta_mal_adri.mp3');
   game.load.audio('congratulations', 'audio/congratulations.mp3');
+  game.load.audio('boss_music', 'audio/boss_music.mp3');
   // Weapons
   game.load.audio('shotgun', 'audio/shotgun-fire.mp3');
   game.load.audio('reload', 'audio/shotgun-reload.mp3');

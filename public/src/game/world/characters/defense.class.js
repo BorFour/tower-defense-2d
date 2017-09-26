@@ -18,7 +18,8 @@ class Turret extends DefensiveStructure {
     this.team = 1;
     this.canShoot = true;
     this.upgrade(GAME.heroArgs.turretLvl);
-    this.shootVelocity = 400;
+    this.shootVelocity = 600;
+    this.attackRange = 700;
     this.projectile = Bullet;
   }
 

@@ -205,9 +205,9 @@ class Character extends Phaser.Sprite {
     if (!target) return null;
     if (target) {
       this.canShoot = false;
-      let bullet = new projectile(game, this.x, this.y, {
-        x: target.x,
-        y: target.y
+      let bullet = new projectile(game, this.x, this.y - 15, {
+        x: target.body ? target.body.center.x : target.x,
+        y: target.body ? target.body.center.y - 15: target.y
       }, velocity);
       bullet.team = this.team;
       bullet.width = 15;

@@ -6,7 +6,7 @@ class DefenderBossBot extends DefenderBot {
     this.team = Team.NPC;
     this.width = 126;
     this.height = 226;
-    this.dmg = 50;
+    this.dmg = 35;
     this.attackRange = 1300;
     this.loot = ITEMS.loots.boss;
     this.angryKey = "boss1";

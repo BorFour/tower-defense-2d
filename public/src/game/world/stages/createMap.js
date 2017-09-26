@@ -51,14 +51,14 @@ function loadObjects(objects, context) {
           hive = new BeeHive(FrogFoe, {
             x: bumper.x,
             y: bumper.y
-          }, GAME.base);
+          }, GAME.base.granny);
           this.context.hives.push(hive);
           break;
         case "beehive":
           hive = new BeeHive(FlyingFoe, {
             x: bumper.x,
             y: bumper.y
-          }, GAME.base);
+          }, GAME.base.granny);
           this.context.hives.push(hive);
           break;
         case "raid":
@@ -248,7 +248,7 @@ function createGroups(context, args) {
     let hive = new BeeHive(args.hives[i].creator, {
       x: args.hives[i].x,
       y: args.hives[i].y
-    }, GAME.base);
+    }, GAME.base.granny);
     this.context.hives.push(hive);
   }
 
