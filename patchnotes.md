@@ -32,6 +32,8 @@
 
 - Los objetos con los que se puede interactuar (cofres de momento) muestran la tecla que has de pulsar para cogerlos
 
+- Nivel 5: no spoiler, pásalo bien :D
+
 ## 09/25/2017
 
 <!-- - Efectos chulos: activar -->
