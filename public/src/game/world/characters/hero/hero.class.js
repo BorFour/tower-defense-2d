@@ -28,7 +28,6 @@ class Hero extends LivingCharacter {
     // this.addChild(this.gun);
     this.canReceiveDamage = true;
 
-
     this.body.setSize(25, 62, 25, 20);
     this.body.reset(this.x, this.y);
 
@@ -87,7 +86,7 @@ class Hero extends LivingCharacter {
   }
 
   shoot(target) {
-    if(!this.canShoot) return;
+    if (!this.canShoot) return;
     this.currentWeapon.onDown(target);
   }
 
@@ -118,7 +117,7 @@ class Hero extends LivingCharacter {
   }
 
   backflip() {
-    if(this.body.blocked.down || this.onWall) {
+    if (this.body.blocked.down || this.onWall) {
       this.dash(false);
     } else {
       super.backflip();
@@ -127,7 +126,7 @@ class Hero extends LivingCharacter {
   }
 
   frontflip() {
-    if(this.body.blocked.down || this.onWall) {
+    if (this.body.blocked.down || this.onWall) {
       this.dash(true);
     } else {
       super.frontflip();
@@ -232,12 +231,29 @@ class Hero extends LivingCharacter {
         }
 
         if (GAME.controller.downDown()) {
-          if (this.animations.currentAnim.name != "crouch") this.play("crouch");
-          this.body.velocity.x /= 1.5;
+          this.crouch();
+        } else {
+          this.standUp();
         }
 
       }
     }
+  }
+
+  standUp() {
+    if (this.body.height < 60) {
+      this.body.setSize(25, 62, 25, 20);
+      // this.body.reset(this.x, this.y);
+    }
+  }
+
+  crouch() {
+    if (this.animations.currentAnim.name != "crouch") this.play("crouch");
+    if (this.body.height > 60) this.body.setSize(25, 42, 25, 35);
+    let prevVelocityX = this.body.velocity.x;
+    // this.body.reset(this.x, this.y);
+    this.body.velocity.x = prevVelocityX/1.5;
+
   }
 
   makeImmune(time) {

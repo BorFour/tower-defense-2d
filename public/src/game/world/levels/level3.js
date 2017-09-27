@@ -40,14 +40,8 @@ function createFirstLevel3(context, tilemapName) {
   // SOUND.backgroundMusic.play();
   if(SOUND.backgroundMusic) SOUND.backgroundMusic.stop();
 
-  createBaseElements({
-    // shop: {
-    //   x: (ROOM_W * 2 - 23) * CELL_W,
-    //   y: (ROOM_H + .5) * CELL_H
-    // }
-  });
-
-
+  // createBaseElements({
+  // });
 
   ////////////////
   // Groups

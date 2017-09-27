@@ -53,8 +53,6 @@ function loadComplete() {
   // synthetizeText("Load complete");
 }
 
-
-
 function loadResources() {
   // loading level tilemap
   game.sound.mute = mute;
@@ -154,6 +152,7 @@ function loadResources() {
 
   game.load.video('congratulations_video', 'video/congratulations_video.webm');
 }
+
 var preloadGame = function(game) {}
 preloadGame.prototype = {
   preload: function() {
@@ -185,7 +184,18 @@ preloadGame.prototype = {
   create: function() {
     game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
     if(SOUND.congratulationsAudio) SOUND.congratulationsAudio.stop();
-    GAME.gameManager = new GameManager(this);
+
+    switch (GAME.gameMode) {
+      case GameManager.ARCADE:
+        GAME.gameManager = new GameManagerArcade(this);
+        break;
+      case GameManager.STORYMODE:
+        GAME.gameManager = new GameManagerStoryMode(this);
+        break;
+      default:
+        GAME.gameManager = new GameManager(this);
+    }
+
     game.time.advancedTiming = true;
     game.state.start("PlayGame");
   }

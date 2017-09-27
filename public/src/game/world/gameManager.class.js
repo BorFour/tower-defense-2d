@@ -39,7 +39,7 @@ class Level {
     PJ.reset();
     GAME.heroArgs.money = PJ.money;
     GAME.heroArgs.nGrenades = PJ.nGrenades;
-    GAME.waveParams.spawnFreq *= .8;
+    GAME.waveParams.spawnFreq *= .9;
     GAME.waveParams.scoreToWin += 5;
     GAME.waveParams.enemyMaxSpeed *= 1.15;
     GAME.waveParams.dmg += 5;
@@ -53,13 +53,14 @@ class Level {
   resetData() {
     PJ.reset();
     GAME.score = 0;
-    GAME.heroArgs.money = 30;
     GAME.waveParams.spawnFreq = 8;
     GAME.waveParams.scoreToWin = 10;
     GAME.waveParams.enemyMaxSpeed = 100;
     GAME.waveParams.dmg = 20;
     this.currentWave = 0;
-    GAME.waveParams.waveNumber = 0;
+    GAME.waveParams.waveNumber = 1;
+    GAME.heroArgs.money = 30;
+    GAME.heroArgs.turretLvl = 1;
     GAME.heroArgs.nGrenades = 3;
     GAME.heroArgs.x = (ROOM_W * 2 - 12) * CELL_W;
     GAME.heroArgs.y = 150;
@@ -68,7 +69,7 @@ class Level {
   onNextWave() {
     this.saveData();
     this.onNewWave(this.context);
-    if (this.currentWave > this.nWaves) {
+    if (this.currentWave >= this.nWaves) {
       return true;
     } else {
       return false;
@@ -127,6 +128,9 @@ class GameManager {
     if (isOverLevel) {
       console.log('NEXT LEVEEEEEEEEL');
       this.currentIndex += 1;
+
+
+
       this.currentIndex = this.currentIndex % this.stages.length;
       GAME.heroArgs.x = (ROOM_W * 2 - 12) * CELL_W;
       GAME.heroArgs.y = 150;
@@ -137,5 +141,36 @@ class GameManager {
 
   update() {
     this.currentLevel.update();
+  }
+}
+
+GameManager.ARCADE = 0;
+GameManager.STORYMODE = 1;
+
+class GameManagerArcade extends GameManager {
+
+}
+
+class GameManagerStoryMode extends GameManager {
+
+  nextStage() {
+    saveHeroArgs(PJ);
+    let isOverLevel = this.currentLevel.onNextWave();
+    if (isOverLevel) {
+      // console.log('NEXT LEVEEEEEEEEL');
+      this.currentIndex += 1;
+      console.log(this.currentIndex);
+      console.log(this.stages.length);
+      if(this.currentIndex >= this.stages.length) {
+        console.log('CUAAAAAAAAAACK');
+        GAME.goGameOver();
+      } else {
+        this.currentIndex = this.currentIndex % this.stages.length;
+        GAME.heroArgs.x = (ROOM_W * 2 - 12) * CELL_W;
+        GAME.heroArgs.y = 150;
+        game.camera.fade(0x000000, 1500, false);
+        game.state.start("PlayGame", true, false);
+      }
+    }
   }
 }

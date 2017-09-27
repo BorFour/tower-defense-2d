@@ -10,6 +10,10 @@
 - Más elementos en el menú (configuración, créditos, etc.)
 - Tesoros escondidos y aleatorios en algunos mapas
 
+## 09/27/2017
+
+- Reducida la hitbox del personaje al agacharse (con suerte esquivas alguna bala y todo)
+
 ## 09/26/2017
 
 - Defender a la abuela
@@ -36,7 +40,7 @@
 
 - Fight for your life, granny! La abuela lanza orbes mágicos a los enemigos cercanos
 
-- Compra PRIMOS en la tienda  
+- Compra PRIMOS en la tienda
 
 ## 09/25/2017
 
