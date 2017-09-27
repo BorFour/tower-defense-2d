@@ -9,7 +9,7 @@ var MONITOR = {};
 var PJ;
 
 MONITOR.thinkTimesAI = [];
-GAME.debugPhysics = true;
+GAME.debugPhysics = false;
 GAME.debug = true;
 GAME.hardcoreMode = true;
 GAME.sandbox_mouseMask = false;

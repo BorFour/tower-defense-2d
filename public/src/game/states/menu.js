@@ -114,6 +114,7 @@ preMenu.prototype = {
     this.mapButton.inputEnabled = true;
     this.mapButton.events.onInputDown.add(() => {
       GAME.dataLoader.firstLevel = GAME.dataLoader.firstLevel % GAME.maxLevel + 1;
+      GAME.GUI.updateDisplay();
     }, this);
 
     // this.controllerButton = game.add.sprite(game.camera.width / 2 + 240, game.camera.height / 2 - 200, 'keyboard');
