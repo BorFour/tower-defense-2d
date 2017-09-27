@@ -16,7 +16,7 @@ GAME.sandbox_mouseMask = false;
 GAME.sandbox_coolTransitions = false;
 GAME.sandbox_foggyMode = false;
 GAME.dataLoader = new DataLoader();
-GAME.gameMode = GameManager.STORYMODE;
+GAME.gameMode = GameManager.ARCADE;
 
 USER.name = "Mr. Random User" ;
 GAME.pickables = [];
