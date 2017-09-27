@@ -1,37 +1,15 @@
-class GamepadController extends KeyboardController {
+class GamepadController extends Controller {
   constructor() {
     super(Controller.GAMEPAD);
     this.type = Controller.GAMEPAD;
     game.input.gamepad.start();
     this.gamepad = game.input.gamepad.pad1;
 
-    // super(Controller.KEYBOARD);
-    this.leftKey = game.input.keyboard.addKey(Phaser.Keyboard.A);
-    this.rightKey = game.input.keyboard.addKey(Phaser.Keyboard.D);
-    this.downKey = game.input.keyboard.addKey(Phaser.Keyboard.S);
-    this.upKey = game.input.keyboard.addKey(Phaser.Keyboard.W);
-    this.jumpKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-    this.boostKey = game.input.keyboard.addKey(Phaser.Keyboard.SHIFT);
-    this.commandMinionsKey = game.input.keyboard.addKey(Phaser.Keyboard.ONE);
-    this.resurrectKey = game.input.keyboard.addKey(Phaser.Keyboard.TWO);
-    this.comeBackKey = game.input.keyboard.addKey(Phaser.Keyboard.THREE);
-    this.muteKey = game.input.keyboard.addKey(Phaser.Keyboard.M);
-    this.controlsKey = game.input.keyboard.addKey(Phaser.Keyboard.C);
-    this.backflipKey = game.input.keyboard.addKey(Phaser.Keyboard.Q);
-    this.frontflipKey = game.input.keyboard.addKey(Phaser.Keyboard.E);
-    this.grenadeKey = game.input.keyboard.addKey(Phaser.Keyboard.R);
-    this.shopKey = game.input.keyboard.addKey(Phaser.Keyboard.P);
-    this.nextItemKey = game.input.keyboard.addKey(Phaser.Keyboard.N);
-    this.pauseKey = game.input.keyboard.addKey(Phaser.Keyboard.ESC);
-    
   }
 
-
-  handleButtons(main) {
-
-
+  handleOnDown(main) {
     var leftStickY = this.gamepad.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y);
-    console.log(leftStickY);
+    // console.log(leftStickY);
 
     if (this.gamepad.justPressed(Phaser.Gamepad.XBOX360_A)) {
       if (leftStickY > .5) {
@@ -40,8 +18,19 @@ class GamepadController extends KeyboardController {
         handleJump();
       }
     }
+
+    if (this.gamepad.justPressed(Phaser.Gamepad.XBOX360_RIGHT_TRIGGER)) {
+      let coords = GAME.controller.shootPoint();
+      PJ.currentWeapon.onDown(coords);
+    }
+
     if (this.gamepad.justPressed(Phaser.Gamepad.XBOX360_B)) {
-      handleResurrectKey();
+      // handleResurrectKey();
+      if (this.boostDown()) {
+        handleBackflip();
+      } else {
+        handleFrontflip();
+      }
     }
     if (this.gamepad.justPressed(Phaser.Gamepad.XBOX360_X)) {
       if (this.boostDown()) {
@@ -50,14 +39,10 @@ class GamepadController extends KeyboardController {
         handlePunch2();
       }
     }
-    if (this.gamepad.justPressed(Phaser.Gamepad.XBOX360_LEFT_BUMPER)) {
-      if (this.boostDown()) {
-        handleComeBack();
-      } else {
-        handleCommandMinions();
-      }
-
+    if (this.gamepad.justPressed(Phaser.Gamepad.XBOX360_Y)) {
+      handlePickNearest();
     }
+
     if (this.gamepad.justPressed(Phaser.Gamepad.XBOX360_DPAD_DOWN)) {
       handleDownKey();
     }
@@ -83,30 +68,39 @@ class GamepadController extends KeyboardController {
     }
 
     if (this.gamepad.justPressed(Phaser.Gamepad.XBOX360_LEFT_BUMPER)) {
-
+      PJ.prevWeapon();
     }
     if (this.gamepad.justPressed(Phaser.Gamepad.XBOX360_RIGHT_BUMPER)) {
-      handleFrontflip();
-      if (this.boostDown()) {
-        handleBackflip();
-      } else {
-        handleFrontflip();
-      }
+      PJ.nextWeapon();
     }
+  }
+
+  handleOnUp(main) {
+
+    // if (this.gamepad.justReleased(Phaser.Gamepad.XBOX360_RIGHT_TRIGGER)) {
+    PJ.currentWeapon.onUp(this.shootPoint());
+    // }
   }
 
   setUpControls(main) {
     this.gamepad.addCallbacks(this, {
-      onDown: this.handleButtons
+      onDown: this.handleOnDown,
+      onUp: this.handleOnUp
     });
 
-    this.pauseKey.onDown.add(handlePause);
+    // this.pauseKey.onDown.add(handlePause);
     // this.gamepad.callbackContext = this;
     this.setUpButtons(main);
   }
 
   setUpButtons(main) {
 
+  }
+
+
+  downDown() {
+    // TODO:
+    return this.gamepad.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) > 0.1;
   }
 
   leftDown() {
@@ -126,13 +120,14 @@ class GamepadController extends KeyboardController {
   }
 
   shootDirection() {
-    var rightStickX = this.gamepad.axis(Phaser.Gamepad.XBOX360_STICK_RIGHT_X);
-    var rightStickY = this.gamepad.axis(Phaser.Gamepad.XBOX360_STICK_RIGHT_Y);
-
-    return {
-      x: rightStickX,
-      y: rightStickY
-    };
+    // var rightStickX = this.gamepad.axis(Phaser.Gamepad.XBOX360_STICK_RIGHT_X);
+    // var rightStickY = this.gamepad.axis(Phaser.Gamepad.XBOX360_STICK_RIGHT_Y);
+    //
+    // return {
+    //   x: rightStickX,
+    //   y: rightStickY
+    // };
+    return this.shootPoint();
   }
 
   shootPoint() {

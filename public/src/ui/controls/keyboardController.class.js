@@ -122,6 +122,10 @@ class KeyboardController extends Controller {
     return game.input.activePointer.leftButton.isDown;
   }
 
+  shootSniper() {
+    this.shootPoint();
+  }
+
   shootDirection() {
     let lookingRight = PJ.scale.x > 0;
     let inputX = game.input.x + game.camera.x;

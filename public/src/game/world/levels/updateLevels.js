@@ -66,6 +66,9 @@ function updateFirstLevel(context) {
       game.debug.text('Last collision detection time: ' + ((time2 - time1) * game.time.fps / 10).toFixed(2) + "%", 40, game.camera.height - 50, "#00ff00");
       game.debug.text('Last hero controls time: ' + ((time1 - time0) * game.time.fps / 10).toFixed(2) + "%", 40, game.camera.height - 30, "#00ff00");
       game.debug.text('Update world time (all): ' + ((time3 - time0) * game.time.fps / 10).toFixed(2) + "%", 40, game.camera.height - 10, "#00ff00");
+
+      game.debug.geom(GAME.controller.shootDirection(), 'rgba(255,255,255,1)');
+
     }
     // Physics
     if (GAME.debugPhysics) {
@@ -268,7 +271,7 @@ function updateCollisions(context) {
       }
     }
     // hero NOT on the ground and touching a wall on the right
-    if ((PJ.body.blocked.right || PJ.body.wasTouching.right || PJ.body.blocked.left  || PJ.body.wasTouching.left) && !PJ.body.blocked.down) {
+    if ((PJ.body.blocked.right || PJ.body.wasTouching.right || PJ.body.blocked.left || PJ.body.wasTouching.left) && !PJ.body.blocked.down) {
       PJ.onWall = true;
     }
 

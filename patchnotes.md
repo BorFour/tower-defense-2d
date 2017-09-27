@@ -12,7 +12,12 @@
 
 ## 09/27/2017
 
-- Reducida la hitbox del personaje al agacharse (con suerte esquivas alguna bala y todo)
+- Añadido cursor de cruz
+- Desactivado indefinidamente el soporte para gamepad
+- Modos de juego
+
+  - STORY MODE: juega todos los niveles en orden hasta llegar al último y "pasarte" el juego
+  - ARCADE MODE: juega el mismo nivel en bucle, aumentando la dificultad a cada oleada
 
 ## 09/26/2017
 

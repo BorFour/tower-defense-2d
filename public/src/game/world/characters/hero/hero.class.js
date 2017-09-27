@@ -148,7 +148,7 @@ class Hero extends LivingCharacter {
     // y: game.input.y + game.camera.y
     // this.gun.rotation = game.physics.arcade.rotationBetween(this, game.input);
 
-    let dir = GAME.controller.shootDirection();
+    let dir = GAME.controller.shootPoint();
     if (!dir) return;
 
     if (this.scale.x < 0) {
@@ -231,9 +231,9 @@ class Hero extends LivingCharacter {
         }
 
         if (GAME.controller.downDown()) {
-          this.crouch();
+          // this.crouch();
         } else {
-          this.standUp();
+          // this.standUp();
         }
 
       }
@@ -242,17 +242,22 @@ class Hero extends LivingCharacter {
 
   standUp() {
     if (this.body.height < 60) {
-      this.body.setSize(25, 62, 25, 20);
-      // this.body.reset(this.x, this.y);
+      // this.body.setSize(25, 62, 25, 20);
+      this.body.height = 62;
+      this.body.offset.y = 20;
     }
   }
 
   crouch() {
     if (this.animations.currentAnim.name != "crouch") this.play("crouch");
-    if (this.body.height > 60) this.body.setSize(25, 42, 25, 35);
+    if (this.body.height > 60) {
+      // this.body.setSize(25, 42, 25, 35);
+      this.body.height = 42;
+      this.body.offset.y = 35;
+    }
     let prevVelocityX = this.body.velocity.x;
     // this.body.reset(this.x, this.y);
-    this.body.velocity.x = prevVelocityX/1.5;
+    this.body.velocity.x = prevVelocityX / 1.5;
 
   }
 

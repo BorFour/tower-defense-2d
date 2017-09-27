@@ -17,14 +17,14 @@ GAME.sandbox_coolTransitions = false;
 GAME.sandbox_foggyMode = false;
 GAME.dataLoader = new DataLoader();
 GAME.gameMode = GameManager.ARCADE;
+GAME.controllerType = Controller.KEYBOARD;
 
-USER.name = "Mr. Random User" ;
+USER.name = "Mr. Random User";
 GAME.pickables = [];
 GAME.pickablesManual = [];
 GAME.AI = {};
 GAME.AI.thinkFrequency = Phaser.Timer.SECOND * .05;
 GAME.score = 0;
-GAME.controllerType = Controller.KEYBOARD;
 GAME.maxLevel = 5;
 GAME.waveParams = {};
 GAME.waveParams.spawnFreq = 8;

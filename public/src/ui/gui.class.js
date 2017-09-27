@@ -10,7 +10,7 @@ class GUI extends dat.GUI {
     this.add(GAME, "sandbox_mouseMask");
     this.add(GAME, "sandbox_coolTransitions");
     this.add(GAME, "sandbox_foggyMode");
-    this.add(GAME.dataLoader, "mute");
+    this.add(game.sound, "mute");
     GAME.restart = () => {
       game.paused = false;
       this.close();

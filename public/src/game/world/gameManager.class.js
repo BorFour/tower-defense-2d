@@ -148,10 +148,22 @@ GameManager.ARCADE = 0;
 GameManager.STORYMODE = 1;
 
 class GameManagerArcade extends GameManager {
+  nextStage() {
+    saveHeroArgs(PJ);
+    let isOverLevel = this.currentLevel.onNextWave();
+    // if (isOverLevel) {
+    game.camera.fade(0x000000, 1500, false);
+    game.state.start("PlayGame", true, false);
+      // }
 
+  }
 }
 
 class GameManagerStoryMode extends GameManager {
+  constructor(context) {
+    super(context);
+    this.currentIndex = 0;
+  }
 
   nextStage() {
     saveHeroArgs(PJ);

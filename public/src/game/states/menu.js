@@ -91,35 +91,43 @@ preMenu.prototype = {
     }, this);
 
 
-    this.playButton = game.add.sprite(game.camera.width / 2 - 160, game.camera.height / 2 + 160, 'enterRoom');
-    this.playButton.anchor.set(.5)
-
-    this.playButton.inputEnabled = true;
-    this.playButton.events.onInputDown.add(() => {
+    this.storyModeButton =  game.add.text(game.camera.width / 2 - 160, game.camera.height / 2 + 160, 'Story Mode');
+    this.storyModeButton.anchor.set(.5);
+    this.storyModeButton.inputEnabled = true;
+    this.storyModeButton.events.onInputDown.add(() => {
       if(GAME.gameManager) GAME.gameManager.currentLevel.resetData();
+      GAME.gameMode = GameManager.STORYMODE;
       game.state.start("PreloadGame");
     }, this);
 
-    this.mapButton = game.add.sprite(game.camera.width / 2 + 160, game.camera.height / 2 + 160, 'changeMap');
+    this.arcadeModeButton =  game.add.text(game.camera.width / 2 + 160, game.camera.height / 2 + 160, 'Arcade Mode');
+    this.arcadeModeButton.anchor.set(.5);
+    this.arcadeModeButton.inputEnabled = true;
+    this.arcadeModeButton.events.onInputDown.add(() => {
+      if(GAME.gameManager) GAME.gameManager.currentLevel.resetData();
+      GAME.gameMode = GameManager.ARCADE;
+      game.state.start("PreloadGame");
+    }, this);
+
+    this.mapButton = game.add.sprite(game.camera.width / 2,  game.camera.height / 2 + 240,  'changeMap');
     this.mapButton.anchor.set(.5)
     this.mapButton.inputEnabled = true;
     this.mapButton.events.onInputDown.add(() => {
       GAME.dataLoader.firstLevel = GAME.dataLoader.firstLevel % GAME.maxLevel + 1;
     }, this);
 
-    this.controllerButton = game.add.sprite(game.camera.width / 2 + 240, game.camera.height / 2 - 200, 'keyboard');
-    this.controllerButton.anchor.set(.5)
-    this.controllerButton.inputEnabled = true;
-    this.controllerButton.events.onInputDown.add(() => {
-      if (this.controllerButton.key == "keyboard") {
-        GAME.controllerType = Controller.GAMEPAD;
-        this.controllerButton.loadTexture('gamepad');
-      } else if (this.controllerButton.key == "gamepad") {
-        GAME.controllerType = Controller.KEYBOARD;
-        this.controllerButton.loadTexture('keyboard');
-      }
-
-    }, this);
+    // this.controllerButton = game.add.sprite(game.camera.width / 2 + 240, game.camera.height / 2 - 200, 'keyboard');
+    // this.controllerButton.anchor.set(.5)
+    // this.controllerButton.inputEnabled = true;
+    // this.controllerButton.events.onInputDown.add(() => {
+    //   if (this.controllerButton.key == "keyboard") {
+    //     GAME.controllerType = Controller.GAMEPAD;
+    //     this.controllerButton.loadTexture('gamepad');
+    //   } else if (this.controllerButton.key == "gamepad") {
+    //     GAME.controllerType = Controller.KEYBOARD;
+    //     this.controllerButton.loadTexture('keyboard');
+    //   }
+    // }, this);
 
   },
 
